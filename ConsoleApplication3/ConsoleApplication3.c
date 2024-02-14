@@ -21,6 +21,7 @@ void list_pop(List *p);// óäàëåíèå ïîñëåäíåãî ýëåìåíòà
 void list_print(const List *p); //âûâîä ñîäåðæèìîãî ñïèñêà â êîíñîëü
 
 
+
 int main()
 {
 	setlocale(0, "");
@@ -50,7 +51,6 @@ int main()
 	}
 	printf_s("Ваш список: \n");
 	list_print(p);
-
 	
 	return 0;
 }
@@ -70,7 +70,7 @@ List *list_init()
 	else
 	{
 		exit(-1);
-		fprintf_s(stderr, "Memory cannot be allocated");
+		fprintf_s(stderr, "Память не может быть аллоцирована");
 	}
 }
 void list_add(List *p, bool n) //ññûëêà äîëæíà áûòü íà çàãëàâíûé ýëåìåíò ñïèñêà
@@ -91,10 +91,10 @@ void list_add(List *p, bool n) //ññûëêà äîëæíà áûòü íà çàã�
 			List *ptr = p->nptr;
 			List *first = ptr;
 			List *check = first->nptr;
-			while (!check->isF)
+			int n = counter - 2;
+			while (n--)
 			{
 				ptr = ptr->nptr;
-				check = ptr->nptr;
 			}
 			ptr->nptr = next;
 			next->pptr = ptr;
@@ -106,7 +106,7 @@ void list_add(List *p, bool n) //ññûëêà äîëæíà áûòü íà çàã�
 	else
 	{
 		exit(-1);
-		fprintf_s(stderr, "Memory cannot be allocated");
+		fprintf_s(stderr, "Память не может быть аллоцирована");
 	}
 }
 void list_pop(List *p) //ññûëêà äîëæíà áûòü íà çàãëàâíûé ýëåìåíò ñïèñêà, ôóíêöèÿ íå äîëæíà âûçûâàòüñÿ êîãäà ñïèñîê ñîäåðæèò òîëüêî çàãëàâíûé ýëåìåíò
@@ -147,20 +147,18 @@ void list_print(const List *p)
 	if (p->nptr) 
 	{
 		List *ptr = p->nptr;
-		List *check = ptr->nptr;
 		int n = counter - 2;
 		while (n)
 		{
 			n--;
 			printf_s("%d ", ptr->value);
 			ptr = ptr->nptr;
-			check = check->nptr;
 		}
 		printf_s("%d", ptr->value);
 	}
 	else
 	{
-		printf_s("No element found");
+		printf_s("Список пуст");
 	}
 	putchar('\n');
 }
