@@ -92,10 +92,8 @@ void list_add(List *p, bool n) //ññûëêà äîëæíà áûòü íà çàã�
 			List *first = ptr;
 			List *check = first->nptr;
 			int n = counter - 2;
-			while (n--)
-			{
-				ptr = ptr->nptr;
-			}
+			while (n--) ptr = ptr->nptr;
+
 			ptr->nptr = next;
 			next->pptr = ptr;
 			next->nptr = first;
@@ -105,17 +103,14 @@ void list_add(List *p, bool n) //ññûëêà äîëæíà áûòü íà çàã�
 	}
 	else
 	{
-		exit(-1);
 		fprintf_s(stderr, "Память не может быть аллоцирована");
+		exit(-1);
 	}
 }
 void list_pop(List *p) //ññûëêà äîëæíà áûòü íà çàãëàâíûé ýëåìåíò ñïèñêà, ôóíêöèÿ íå äîëæíà âûçûâàòüñÿ êîãäà ñïèñîê ñîäåðæèò òîëüêî çàãëàâíûé ýëåìåíò
 {
-
-
 	if (counter > 2)
 	{
-
 		List *ptr = p->nptr;
 		List *first = ptr;
 		List *check = first->nptr;
@@ -137,8 +132,8 @@ void list_pop(List *p) //ññûëêà äîëæíà áûòü íà çàãëàâí�
 	}
 	else
 	{
+		fprintf_s(stderr, "Удаление элемента из пустого списка");
 		exit(-1);
-		fprintf_s(stderr, "Memory cannot be allocated");
 	}
 	counter--;
 }
@@ -156,9 +151,7 @@ void list_print(const List *p)
 		}
 		printf_s("%d", ptr->value);
 	}
-	else
-	{
-		printf_s("Список пуст");
-	}
+	else printf_s("Список пуст");
+
 	putchar('\n');
 }
