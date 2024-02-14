@@ -70,8 +70,9 @@ List *list_init()
 	}
 	else
 	{
-		exit(-1);
 		fprintf_s(stderr, "Память не может быть аллоцирована");
+		exit(-1);
+		
 	}
 }
 void list_add(List *p, bool n) //ññûëêà äîëæíà áûòü íà çàãëàâíûé ýëåìåíò ñïèñêà
