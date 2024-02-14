@@ -4,6 +4,7 @@
 #include <windows.h>
 #include <stdbool.h>
 #include <locale.h>
+#include <conio.h>
 
 static int counter = 0; 
 
@@ -52,7 +53,7 @@ int main()
 	printf_s("Ваш список: \n");
 	list_print(p);
 	
-	return 0;
+	return 0 * _getch();
 }
 
 List *list_init()
@@ -113,13 +114,10 @@ void list_pop(List *p) //ññûëêà äîëæíà áûòü íà çàãëàâí�
 	{
 		List *ptr = p->nptr;
 		List *first = ptr;
-		List *check = first->nptr;
 		List *prev = NULL;
-		while (!check->isF)
-		{
-			ptr = ptr->nptr;
-			check = ptr->nptr;
-		}
+		int n = counter - 2;
+		while (n--) ptr = ptr->nptr;
+
 		prev = ptr->pptr;
 		prev->nptr = first;
 		free(ptr);
