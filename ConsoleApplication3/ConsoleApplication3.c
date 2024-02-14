@@ -6,7 +6,7 @@
 #include <locale.h>
 #include <conio.h>
 
-static int counter = 0; 
+static ULONG64 counter = 0; 
 
 typedef struct
 {
@@ -92,7 +92,7 @@ void list_add(List *p, bool n) //ññûëêà äîëæíà áûòü íà çàã�
 			List *ptr = p->nptr;
 			List *first = ptr;
 			List *check = first->nptr;
-			int n = counter - 2;
+			ULONG64 n = counter - 2;
 			while (n--) ptr = ptr->nptr;
 
 			ptr->nptr = next;
@@ -115,7 +115,7 @@ void list_pop(List *p) //ññûëêà äîëæíà áûòü íà çàãëàâí�
 		List *ptr = p->nptr;
 		List *first = ptr;
 		List *prev = NULL;
-		int n = counter - 2;
+		ULONG64 n = counter - 2;
 		while (n--) ptr = ptr->nptr;
 
 		prev = ptr->pptr;
@@ -140,7 +140,7 @@ void list_print(const List *p)
 	if (p->nptr) 
 	{
 		List *ptr = p->nptr;
-		int n = counter - 2;
+		ULONG64 n = counter - 2;
 		while (n)
 		{
 			n--;
